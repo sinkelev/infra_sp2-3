@@ -50,15 +50,15 @@ https://hub.docker.com/repository/docker/mishinaanast/yamdb
 ```$ docker build -t yamdb .```
 - Start container:
 ```$ docker run -it -p 8000:8000 yamdb```
-- Создаем файл `````.env````` в корневой директории, добавляем туда данные для поключения к базе данных.
-- Изменяем файл ```settings.py```, чтобы значения загружались из переменных окружения.
-- Добавляем в Dockerfile команду для запуска приложения через gunicorn
-- Создаем файл ```docker-compose.yaml``` в корневой директории проекта и добавляем инструкции по развертыванию.
-- Проверяем работоспобность:
+- Create a file `````.env````` in the root directory, add data there to connect to the database.
+- Modifying the file ```settings.py```, so that the values are loaded from environment variables.
+- Add to Dockerfile command to run the application through gunicorn.
+- Create a file ```docker-compose.yaml``` in the root directory of the project and add deployment instructions.
+- We check the workability:
 ```$ docker-compose up```
-- Создаем папку ```nginx/``` в корневой директории проекта, а в ней файл ```default.conf```. 
-- В ```settings.py``` добавляем абсолютный путь к каталогу.
-- Дополняем файл ```docker-compose.yaml``` описанием контейнера nginx.
+- Create a folder ```nginx/``` in the root directory of the project, and in it the file ```default.conf```. 
+- In ```settings.py``` add the absolute path to the directory.
+- Supplementing the file ```docker-compose.yaml``` container description nginx.
 - Deploy containers in the background and rebuild before launch:
 ```$ docker-compose up -d --build```
 - Run migrations:
@@ -67,12 +67,10 @@ https://hub.docker.com/repository/docker/mishinaanast/yamdb
 ```$ docker-compose exec web python manage.py createsuperuser```
 - Collect statics:
 ```$ docker-compose exec web python manage.py collectstatic --no-input```
-- Fill the database with initial data:
-```$ docker-compose exec web python manage.py loaddata fixtures.json```
-- Create an image locally with the desired name and tag:
-```$ docker build -t <Docker ID>/<image-name>:<tag> .```
-- Log in through the console:
+- Create an image with the desired name and tag:
+```$ docker build -t mishinaanast/yamdb_praktikum:v2.11.1989 .```
+- We log in through the console:
 ```$ winpty docker login```
-- Upload the image to DockerHub:
-```$ docker push <Docker ID>/<image-name>:<tag>```
+- Uploading the image to DockerHub:
+```$  docker push mishinaanast/yamdb_praktikum:v2.11.1989```
 
